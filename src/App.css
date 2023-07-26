@@ -1,0 +1,20 @@
+.App {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+
+#buttonContainer {
+  display: flex;
+  width: 25%;
+  height: 25%;
+  flex-wrap: wrap;
+}
+
+.button {
+  display: flex;
+  flex-basis: 25%;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+}
