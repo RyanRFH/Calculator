@@ -1,9 +1,17 @@
 .App {
   display: flex;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+}
+
+#calculatorWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 #buttonContainer {
@@ -24,11 +32,16 @@
 #calculatorDisplay {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 25%;
+  background-color: rgb(105, 240, 105);
   
 }
 
+.calculatedNumber {
+  font-weight: bold;
+}
+
 .displayBox {
-  background-color: aqua;
+  background-color: rgb(111, 244, 244);
   text-align: center;
 }
