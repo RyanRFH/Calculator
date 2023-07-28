@@ -49,3 +49,7 @@
   background-color: rgb(111, 244, 244);
   text-align: center;
 }
+
+#inputBox {
+  width: 25%;
+}

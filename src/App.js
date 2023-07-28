@@ -20,6 +20,9 @@ function App() {
   //Displays whole typed string
   const [currentCalculation, setCurrentCalculation] = useState('');
 
+  //Ref to input box
+  const inputBoxRef = useRef();
+
   //Displays final calculated number
   const [calculatedNumber, setCalculatedNumber] = useState(0);
 
@@ -37,9 +40,32 @@ function App() {
     setCalcIsContinued(false);
   }
 
-
-
   const clickHandler = (button) => {
+    //Checks if the entered key is a valid calculator character
+    if (!buttonsDisplayCharactersArray.includes(button) && button !== "Shift"){
+      console.log("Entered key is not a valid number or operator");
+      console.log(button);
+      inputBoxRef.current.value = "";
+      setCurrentCalculation("");
+      setCalculatedNumber(0);
+      return;
+
+    } else if (button === "Shift") { //Shift is used to enter some operators like '+' and '*' so ignore shift when pressed
+      return;
+
+    } else if (button === "=" || button === 'C') { //Cannot enter '=' or 'C' into keyboard
+      console.log("Cannot enter '=' or 'C' with keyboard");
+      inputBoxRef.current.value = "";
+
+      //Checks if button is an operator and if the last character in the input box is an operator
+    } else if (isAnOperator.includes(button) && isAnOperator.includes(inputBoxRef.current.value[(inputBoxRef.current.value).length - 2]))  {
+      console.log("Cannot have two operators in a row");
+      inputBoxRef.current.value = "";
+      setCurrentCalculation("");
+      setCalculatedNumber(0);
+
+    }
+
 
     if (!isAFunctionality.includes(button)) { //Checks if button is not an equals or C
       
@@ -108,6 +134,7 @@ function App() {
 
   return (
     <div className="App">
+      <input id="inputBox" type='text' placeholder='Enter calculation' ref={inputBoxRef} onKeyUp={(event) => clickHandler(event.key)}></input>
       <div id="calculatorWrapper">
 
         <div id="calculatorDisplay">
